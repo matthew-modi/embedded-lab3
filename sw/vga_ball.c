@@ -37,16 +37,17 @@
 
 /* Device registers */
 #define BG_RED(x) (x)
-#define BG_GREEN(x) ((x)+1)
-#define BG_BLUE(x) ((x)+2)
+#define BG_GREEN(x) ((x) + 1)
+#define BG_BLUE(x) ((x) + 2)
 
 /*
  * Information about our device
  */
-struct vga_ball_dev {
-	struct resource res; /* Resource: our registers */
+struct vga_ball_dev
+{
+	struct resource res;	/* Resource: our registers */
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
-        vga_ball_color_t background;
+	vga_ball_color_t background;
 } dev;
 
 /*
@@ -55,9 +56,9 @@ struct vga_ball_dev {
  */
 static void write_background(vga_ball_color_t *background)
 {
-	iowrite8(background->red, BG_RED(dev.virtbase) );
-	iowrite8(background->green, BG_GREEN(dev.virtbase) );
-	iowrite8(background->blue, BG_BLUE(dev.virtbase) );
+	iowrite8(background->red, BG_RED(dev.virtbase));
+	iowrite8(background->green, BG_GREEN(dev.virtbase));
+	iowrite8(background->blue, BG_BLUE(dev.virtbase));
 	dev.background = *background;
 }
 
@@ -70,18 +71,19 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 {
 	vga_ball_arg_t vla;
 
-	switch (cmd) {
+	switch (cmd)
+	{
 	case VGA_BALL_WRITE_BACKGROUND:
-		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-				   sizeof(vga_ball_arg_t)))
+		if (copy_from_user(&vla, (vga_ball_arg_t *)arg,
+						   sizeof(vga_ball_arg_t)))
 			return -EACCES;
 		write_background(&vla.background);
 		break;
 
 	case VGA_BALL_READ_BACKGROUND:
-	  	vla.background = dev.background;
-		if (copy_to_user((vga_ball_arg_t *) arg, &vla,
-				 sizeof(vga_ball_arg_t)))
+		vla.background = dev.background;
+		if (copy_to_user((vga_ball_arg_t *)arg, &vla,
+						 sizeof(vga_ball_arg_t)))
 			return -EACCES;
 		break;
 
@@ -94,15 +96,15 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 
 /* The operations our device knows how to do */
 static const struct file_operations vga_ball_fops = {
-	.owner		= THIS_MODULE,
+	.owner = THIS_MODULE,
 	.unlocked_ioctl = vga_ball_ioctl,
 };
 
 /* Information about our device for the "misc" framework -- like a char dev */
 static struct miscdevice vga_ball_misc_device = {
-	.minor		= MISC_DYNAMIC_MINOR,
-	.name		= DRIVER_NAME,
-	.fops		= &vga_ball_fops,
+	.minor = MISC_DYNAMIC_MINOR,
+	.name = DRIVER_NAME,
+	.fops = &vga_ball_fops,
 };
 
 /*
@@ -111,7 +113,7 @@ static struct miscdevice vga_ball_misc_device = {
  */
 static int __init vga_ball_probe(struct platform_device *pdev)
 {
-        vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
+	vga_ball_color_t beige = {0xf9, 0xe4, 0xb7};
 	int ret;
 
 	/* Register ourselves as a misc device: creates /dev/vga_ball */
@@ -119,27 +121,30 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 
 	/* Get the address of our registers from the device tree */
 	ret = of_address_to_resource(pdev->dev.of_node, 0, &dev.res);
-	if (ret) {
+	if (ret)
+	{
 		ret = -ENOENT;
 		goto out_deregister;
 	}
 
 	/* Make sure we can use these registers */
 	if (request_mem_region(dev.res.start, resource_size(&dev.res),
-			       DRIVER_NAME) == NULL) {
+						   DRIVER_NAME) == NULL)
+	{
 		ret = -EBUSY;
 		goto out_deregister;
 	}
 
 	/* Arrange access to our registers */
 	dev.virtbase = of_iomap(pdev->dev.of_node, 0);
-	if (dev.virtbase == NULL) {
+	if (dev.virtbase == NULL)
+	{
 		ret = -ENOMEM;
 		goto out_release_mem_region;
 	}
-        
+
 	/* Set an initial color */
-        write_background(&beige);
+	write_background(&beige);
 
 	return 0;
 
@@ -162,7 +167,7 @@ static int vga_ball_remove(struct platform_device *pdev)
 /* Which "compatible" string(s) to search for in the Device Tree */
 #ifdef CONFIG_OF
 static const struct of_device_id vga_ball_of_match[] = {
-	{ .compatible = "csee4840,vga_ball-1.0" },
+	{.compatible = "csee4840,vga_ball-1.0"},
 	{},
 };
 MODULE_DEVICE_TABLE(of, vga_ball_of_match);
@@ -170,12 +175,12 @@ MODULE_DEVICE_TABLE(of, vga_ball_of_match);
 
 /* Information for registering ourselves as a "platform" driver */
 static struct platform_driver vga_ball_driver = {
-	.driver	= {
-		.name	= DRIVER_NAME,
-		.owner	= THIS_MODULE,
+	.driver = {
+		.name = DRIVER_NAME,
+		.owner = THIS_MODULE,
 		.of_match_table = of_match_ptr(vga_ball_of_match),
 	},
-	.remove	= __exit_p(vga_ball_remove),
+	.remove = __exit_p(vga_ball_remove),
 };
 
 /* Called when the module is loaded: set things up */
