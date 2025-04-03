@@ -1,6 +1,6 @@
 Info: Starting: Create block symbol file (.bsf)
-Info: qsys-generate /homes/user/stud/fall21/mem2382/Downloads/lab3-hw(1)/lab3-hw/soc_system.qsys --block-symbol-file --output-directory=/homes/user/stud/fall21/mem2382/Downloads/lab3-hw(1)/lab3-hw/soc_system --family="Cyclone V" --part=5CSEMA5F31C6
-Progress: Loading lab3-hw/soc_system.qsys
+Info: qsys-generate /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system.qsys --block-symbol-file --output-directory=/homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading hw/soc_system.qsys
 Progress: Reading input file
 Progress: Adding clk_0 [clock_source 21.1]
 Progress: Parameterizing module clk_0
@@ -18,8 +18,8 @@ Info: qsys-generate succeeded.
 Info: Finished: Create block symbol file (.bsf)
 Info: 
 Info: Starting: Create HDL design files for synthesis
-Info: qsys-generate /homes/user/stud/fall21/mem2382/Downloads/lab3-hw(1)/lab3-hw/soc_system.qsys --synthesis=VERILOG --output-directory=/homes/user/stud/fall21/mem2382/Downloads/lab3-hw(1)/lab3-hw/soc_system/synthesis --family="Cyclone V" --part=5CSEMA5F31C6
-Progress: Loading lab3-hw/soc_system.qsys
+Info: qsys-generate /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system.qsys --synthesis=VERILOG --output-directory=/homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading hw/soc_system.qsys
 Progress: Reading input file
 Progress: Adding clk_0 [clock_source 21.1]
 Progress: Parameterizing module clk_0
@@ -52,15 +52,15 @@ Info: vga_ball_0_avalon_slave_0_agent_rsp_fifo: "mm_interconnect_0" instantiated
 Info: router: "mm_interconnect_0" instantiated altera_merlin_router "router"
 Info: router_002: "mm_interconnect_0" instantiated altera_merlin_router "router_002"
 Info: vga_ball_0_avalon_slave_0_burst_adapter: "mm_interconnect_0" instantiated altera_merlin_burst_adapter "vga_ball_0_avalon_slave_0_burst_adapter"
-Info: Reusing file /homes/user/stud/fall21/mem2382/Downloads/lab3-hw(1)/lab3-hw/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
 Info: cmd_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_demux"
 Info: cmd_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_mux"
 Info: rsp_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_demux"
 Info: rsp_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_mux"
-Info: Reusing file /homes/user/stud/fall21/mem2382/Downloads/lab3-hw(1)/lab3-hw/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
+Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/altera_merlin_arbitrator.sv
 Info: vga_ball_0_avalon_slave_0_rsp_width_adapter: "mm_interconnect_0" instantiated altera_merlin_width_adapter "vga_ball_0_avalon_slave_0_rsp_width_adapter"
-Info: Reusing file /homes/user/stud/fall21/mem2382/Downloads/lab3-hw(1)/lab3-hw/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
-Info: Reusing file /homes/user/stud/fall21/mem2382/Downloads/lab3-hw(1)/lab3-hw/soc_system/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/altera_merlin_address_alignment.sv
+Info: Reusing file /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/altera_merlin_burst_uncompressor.sv
 Info: avalon_st_adapter: "mm_interconnect_0" instantiated altera_avalon_st_adapter "avalon_st_adapter"
 Info: border: "hps_io" instantiated altera_interface_generator "border"
 Info: error_adapter_0: "avalon_st_adapter" instantiated error_adapter "error_adapter_0"
