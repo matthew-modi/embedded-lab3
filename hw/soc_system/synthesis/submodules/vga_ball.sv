@@ -34,7 +34,7 @@ module vga_ball(input logic        clk,
    always_ff @(posedge clk)
      if (reset) begin
 	background_r <= 8'h0;
-	background_g <= 8'h0;
+	background_g <= 8'h80;
 	background_b <= 8'h80;
      end else if (chipselect && write)
        case (address)
