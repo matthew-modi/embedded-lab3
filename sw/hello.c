@@ -43,6 +43,18 @@ void set_background_color(const vga_ball_color_t *c)
     }
 }
 
+void print_position()
+{
+    vga_ball_arg_t vla;
+    if (ioctl(vga_ball_fd, VGA_BALL_READ_POSITION, &vla))
+    {
+        perror("ioctl(VGA_BALL_READ_POSITION) failed");
+        return;
+    }
+    printf("%04x %04x\n",
+           vla.position.x, vla.position.y);
+}
+
 void set_position(const vga_ball_position_t *position)
 {
     vga_ball_arg_t vla;
@@ -54,6 +66,12 @@ void set_position(const vga_ball_position_t *position)
     }
 }
 
+/* Convert HSV to RGB color space
+ * h: hue (0-360 degrees)
+ * s: saturation (0-1)
+ * v: value (0-1)
+ * r, g, b: output RGB values (0-255)
+ */
 void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b)
 {
     while (h >= 360)
