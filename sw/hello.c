@@ -79,7 +79,7 @@ int main()
   }
 
   int r, g, b;
-  float h, s, v = 1.0;
+  float h = 0.0, s = 1.0, v = 1.0;
 
   for (;;) {
     hsv_to_rgb(h, s, v, &r, &g, &b);
