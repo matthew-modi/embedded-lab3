@@ -78,8 +78,9 @@ int main()
   for (;;) {
     hsv_to_rgb(h, s, v, &r, &g, &b);
     h += 1.0; // Increment hue
-    if (h >= 360.0) h = 0.0; // Wrap around hue
-    set_background_color({r, g, b});
+    if (h >= 360.0) h = 0.0;
+    vga_ball_color_t color = { r, g, b };
+    set_background_color(&color);
     print_background_color();
     usleep(400000);
   }
