@@ -18,31 +18,48 @@
 int vga_ball_fd;
 
 /* Read and print the background color */
-void print_background_color() {
-  vga_ball_arg_t vla;
-  
-  if (ioctl(vga_ball_fd, VGA_BALL_READ_BACKGROUND, &vla)) {
-      perror("ioctl(VGA_BALL_READ_BACKGROUND) failed");
-      return;
-  }
-  printf("%02x %02x %02x\n",
-	 vla.background.red, vla.background.green, vla.background.blue);
+void print_background_color()
+{
+    vga_ball_arg_t vla;
+
+    if (ioctl(vga_ball_fd, VGA_BALL_READ_BACKGROUND, &vla))
+    {
+        perror("ioctl(VGA_BALL_READ_BACKGROUND) failed");
+        return;
+    }
+    printf("%02x %02x %02x\n",
+           vla.background.red, vla.background.green, vla.background.blue);
 }
 
 /* Set the background color */
 void set_background_color(const vga_ball_color_t *c)
 {
-  vga_ball_arg_t vla;
-  vla.background = *c;
-  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
-      perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
-      return;
-  }
+    vga_ball_arg_t vla;
+    vla.background = *c;
+    if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla))
+    {
+        perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+        return;
+    }
 }
 
-void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
-    while (h >= 360) h -= 360;
-    while (h < 0)    h += 360;
+void set_position(const vga_ball_position_t *position)
+{
+    vga_ball_arg_t vla;
+    vla.position = *position;
+    if (ioctl(vga_ball_fd, VGA_BALL_WRITE_POSITION, &vla))
+    {
+        perror("ioctl(VGA_BALL_SET_POSITION) failed");
+        return;
+    }
+}
+
+void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b)
+{
+    while (h >= 360)
+        h -= 360;
+    while (h < 0)
+        h += 360;
 
     int i = h / 60;
     float f = (h / 60) - i;
@@ -51,13 +68,38 @@ void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
     float t = v * (1 - s * (1 - f));
 
     float r1, g1, b1;
-    switch (i) {
-        case 0: r1 = v; g1 = t; b1 = p; break;
-        case 1: r1 = q; g1 = v; b1 = p; break;
-        case 2: r1 = p; g1 = v; b1 = t; break;
-        case 3: r1 = p; g1 = q; b1 = v; break;
-        case 4: r1 = t; g1 = p; b1 = v; break;
-        default: r1 = v; g1 = p; b1 = q; break;
+    switch (i)
+    {
+    case 0:
+        r1 = v;
+        g1 = t;
+        b1 = p;
+        break;
+    case 1:
+        r1 = q;
+        g1 = v;
+        b1 = p;
+        break;
+    case 2:
+        r1 = p;
+        g1 = v;
+        b1 = t;
+        break;
+    case 3:
+        r1 = p;
+        g1 = q;
+        b1 = v;
+        break;
+    case 4:
+        r1 = t;
+        g1 = p;
+        b1 = v;
+        break;
+    default:
+        r1 = v;
+        g1 = p;
+        b1 = q;
+        break;
     }
 
     *r = (int)(r1 * 255);
@@ -67,31 +109,34 @@ void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
 
 int main()
 {
-  vga_ball_arg_t vla;
-  int i;
-  static const char filename[] = "/dev/vga_ball";
+    vga_ball_arg_t vla;
+    int i;
+    static const char filename[] = "/dev/vga_ball";
 
-  printf("VGA ball Userspace program started\n");
+    printf("VGA ball Userspace program started\n");
 
-  if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
-    fprintf(stderr, "could not open %s\n", filename);
-    return -1;
-  }
+    if ((vga_ball_fd = open(filename, O_RDWR)) == -1)
+    {
+        fprintf(stderr, "could not open %s\n", filename);
+        return -1;
+    }
 
-  int r, g, b;
-  float h = 0.0, s = 1.0, v = 1.0;
+    int r, g, b;
+    float h = 0.0, s = 1.0, v = 1.0;
 
-  for (;;) {
-    hsv_to_rgb(h, s, v, &r, &g, &b);
-    h += 1.0; // Increment hue
-    if (h >= 360.0) h = 0.0;
-    vga_ball_color_t color = { r, g, b };
-    set_background_color(&color);
-    printf("HSV: h=%.2f s=%.2f v=%.2f -> RGB: r=%d g=%d b=%d\n", h, s, v, r, g, b);
-    // print_background_color();
-    usleep(400000);
-  }
-  
-  printf("VGA BALL Userspace program terminating\n");
-  return 0;
+    for (;;)
+    {
+        hsv_to_rgb(h, s, v, &r, &g, &b);
+        h += 1.0; // Increment hue
+        if (h >= 360.0)
+            h = 0.0;
+        vga_ball_color_t color = {r, g, b};
+        set_background_color(&color);
+        printf("HSV: h=%.2f s=%.2f v=%.2f -> RGB: r=%d g=%d b=%d\n", h, s, v, r, g, b);
+        // print_background_color();
+        usleep(400000);
+    }
+
+    printf("VGA BALL Userspace program terminating\n");
+    return 0;
 }
