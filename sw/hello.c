@@ -142,9 +142,8 @@ int main()
     int r, g, b;
     float h = 0.0, s = 1.0, v = 1.0;
 
-    int x, y; // 16 bit so 0 to 2^16=65536-1
-    int v = 0;
-    int g = 0;
+    float x, y; // 16 bit so 0 to 2^16=65536-1
+    float dx = 0.01, dy = 0.01; // velocity in x and y directions
 
     for (;;)
     {
@@ -158,9 +157,22 @@ int main()
         printf("HSV: h=%.2f s=%.2f v=%.2f -> RGB: r=%d g=%d b=%d\n", h, s, v, r, g, b);
         
         // Bounce the ball around the screen
+        x += dx;
+        y += dy;
+        if (x >= 1.0 || x <= 0.0)
+        {
+            dx = -dx; // Reverse direction in x
+            x += dx; // Adjust position to stay within bounds
+        }
+        if (y >= 1.0 || y <= 0.0)
+        {
+            dy = -dy; // Reverse direction in y
+            y += dy; // Adjust position to stay within bounds
+        }
         
-        i+10;
-        vga_ball_position_t position = {i, 65535/2};
+        vga_ball_position_t position = { // map x and y (0 to 1) to ints from 0 to 65535
+            (unsigned short)(x * 65535), 
+            (unsigned short)(y * 65535)};
         set_position(&position);
         print_position();
 
