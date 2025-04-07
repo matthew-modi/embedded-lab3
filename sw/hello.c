@@ -14,7 +14,6 @@
 #include <fcntl.h>
 #include <string.h>
 #include <unistd.h>
-#include <math.h>
 
 int vga_ball_fd;
 
@@ -42,21 +41,28 @@ void set_background_color(const vga_ball_color_t *c)
 }
 
 void hsv_to_rgb(float h, float s, float v, int *r, int *g, int *b) {
-    float c = v * s;
-    float x = c * (1 - fabs(fmod(h / 60.0, 2) - 1));
-    float m = v - c;
+    while (h >= 360) h -= 360;
+    while (h < 0)    h += 360;
+
+    int i = h / 60;
+    float f = (h / 60) - i;
+    float p = v * (1 - s);
+    float q = v * (1 - s * f);
+    float t = v * (1 - s * (1 - f));
+
     float r1, g1, b1;
+    switch (i) {
+        case 0: r1 = v; g1 = t; b1 = p; break;
+        case 1: r1 = q; g1 = v; b1 = p; break;
+        case 2: r1 = p; g1 = v; b1 = t; break;
+        case 3: r1 = p; g1 = q; b1 = v; break;
+        case 4: r1 = t; g1 = p; b1 = v; break;
+        default: r1 = v; g1 = p; b1 = q; break;
+    }
 
-    if (h < 60)       { r1 = c; g1 = x; b1 = 0; }
-    else if (h < 120) { r1 = x; g1 = c; b1 = 0; }
-    else if (h < 180) { r1 = 0; g1 = c; b1 = x; }
-    else if (h < 240) { r1 = 0; g1 = x; b1 = c; }
-    else if (h < 300) { r1 = x; g1 = 0; b1 = c; }
-    else              { r1 = c; g1 = 0; b1 = x; }
-
-    *r = (int)((r1 + m) * 255);
-    *g = (int)((g1 + m) * 255);
-    *b = (int)((b1 + m) * 255);
+    *r = (int)(r1 * 255);
+    *g = (int)(g1 * 255);
+    *b = (int)(b1 * 255);
 }
 
 int main()
