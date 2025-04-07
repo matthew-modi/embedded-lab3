@@ -142,8 +142,13 @@ int main()
     int r, g, b;
     float h = 0.0, s = 1.0, v = 1.0;
 
+    int x, y; // 16 bit so 0 to 2^16=65536-1
+    int v = 0;
+    int g = 0;
+
     for (;;)
     {
+        // Set the background color using HSV to RGB conversion
         hsv_to_rgb(h, s, v, &r, &g, &b);
         h += 1.0; // Increment hue
         if (h >= 360.0)
@@ -151,7 +156,14 @@ int main()
         vga_ball_color_t color = {r, g, b};
         set_background_color(&color);
         printf("HSV: h=%.2f s=%.2f v=%.2f -> RGB: r=%d g=%d b=%d\n", h, s, v, r, g, b);
-        // print_background_color();
+        
+        // Bounce the ball around the screen
+        
+        i+10;
+        vga_ball_position_t position = {i, 65535/2};
+        set_position(&position);
+        print_position();
+
         usleep(400000);
     }
 
