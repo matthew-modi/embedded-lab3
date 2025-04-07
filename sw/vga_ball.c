@@ -102,7 +102,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 
 	case VGA_BALL_READ_POSITION:
 		vla.position = dev.position;
-		if (copy_from_user((vga_ball_arg_t *) arg, &vla,
+		if (copy_to_user((vga_ball_arg_t *) arg, &vla,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
 		break;
