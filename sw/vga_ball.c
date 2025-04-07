@@ -53,7 +53,7 @@ struct vga_ball_dev {
 	struct resource res; /* Resource: our registers */
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
         vga_ball_color_t background;
-		vga_ball_pos_t position;
+		vga_ball_position_t position;
 } dev;
 
 /*
