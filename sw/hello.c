@@ -87,7 +87,8 @@ int main()
     if (h >= 360.0) h = 0.0;
     vga_ball_color_t color = { r, g, b };
     set_background_color(&color);
-    print_background_color();
+    printf("HSV: h=%.2f s=%.2f v=%.2f -> RGB: r=%d g=%d b=%d\n", h, s, v, r, g, b);
+    // print_background_color();
     usleep(400000);
   }
   
