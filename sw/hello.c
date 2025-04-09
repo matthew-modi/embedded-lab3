@@ -144,7 +144,7 @@ int main()
 
     unsigned short x = 20, y = 20;
     int dx = 1, dy = 1;
-    int r = 16;
+    int radius = 16;
 
     for (;;)
     {
@@ -160,12 +160,12 @@ int main()
         // Bounce the ball around the screen
         x += dx;
         y += dy;
-        if (x >= (640-r) || x <= r)
+        if (x >= (640-radius) || x <= radius)
         {
             dx = -dx;
             x += dx;
         }
-        if (y >= (480-r) || y <= r)
+        if (y >= (480-radius) || y <= radius)
         {
             dy = -dy;
             y += dy;
