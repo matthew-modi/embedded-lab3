@@ -143,7 +143,7 @@ int main()
     float h = 0.0, s = 1.0, v = 1.0;
 
     float x, y; // 16 bit so 0 to 2^16=65536-1
-    float dx = 0.01, dy = 0.01; // velocity in x and y directions
+    float dx = 0.1, dy = 0.1; // velocity in x and y directions
 
     for (;;)
     {

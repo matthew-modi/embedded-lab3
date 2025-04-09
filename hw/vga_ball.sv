@@ -42,8 +42,12 @@ module vga_ball (
 	logic [15:0] x, y;
 	logic [9:0] r;
 
-  logic signed [11:0] dx;
-  logic signed [11:0] dy;
+  logic [11:0] vga_x;
+  logic [11:0] vga_y;
+  logic [11:0] pos_x;
+  logic [11:0] pos_y;
+  logic [11:0] dx;
+  logic [11:0] dy;
   logic [23:0] dist_sq;
 
 	vga_counters counters (
