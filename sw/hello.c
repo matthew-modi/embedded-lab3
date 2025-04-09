@@ -143,13 +143,13 @@ int main()
     float h = 0.0, s = 1.0, v = 1.0;
 
     float x, y; // 16 bit so 0 to 2^16=65536-1
-    float dx = 0.001, dy = 0.001; // velocity in x and y directions
+    float dx = 0.005, dy = 0.005; // velocity in x and y directions
 
     for (;;)
     {
         // Set the background color using HSV to RGB conversion
         hsv_to_rgb(h, s, v, &r, &g, &b);
-        h += 1.0; // Increment hue
+        h += .5; // Increment hue
         if (h >= 360.0)
             h = 0.0;
         vga_ball_color_t color = {r, g, b};
@@ -176,7 +176,7 @@ int main()
         set_position(&position);
         print_position();
 
-        usleep(50000);
+        usleep(10000);
     }
 
     printf("VGA BALL Userspace program terminating\n");
