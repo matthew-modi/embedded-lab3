@@ -1,5 +1,5 @@
 Fitter report for soc_system
-Wed Apr  9 14:35:59 2025
+Wed Apr  9 15:59:05 2025
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Wed Apr  9 14:35:59 2025       ;
+; Fitter Status                   ; Successful - Wed Apr  9 15:59:05 2025       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; soc_system                                  ;
 ; Top-level Entity Name           ; soc_system_top                              ;
@@ -163,7 +163,7 @@ https://fpgasoftware.intel.com/eula.
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   1.6%      ;
-;     Processor 3            ;   1.5%      ;
+;     Processor 3            ;   1.6%      ;
 ;     Processor 4            ;   1.5%      ;
 +----------------------------+-------------+
 
@@ -461,7 +461,7 @@ The pin-out file can be found in /homes/user/stud/fall21/mem2382/Desktop/embedde
 ; Impedance control blocks                                    ; 1 / 4              ; 25 %  ;
 ; Hard Memory Controllers                                     ; 1 / 2              ; 50 %  ;
 ; Average interconnect usage (total/H/V)                      ; 0.4% / 0.3% / 0.4% ;       ;
-; Peak interconnect usage (total/H/V)                         ; 7.5% / 7.3% / 8.1% ;       ;
+; Peak interconnect usage (total/H/V)                         ; 7.5% / 7.3% / 8.2% ;       ;
 ; Maximum fan-out                                             ; 704                ;       ;
 ; Highest non-global fan-out                                  ; 260                ;       ;
 ; Total fan-out                                               ; 5970               ;       ;
@@ -3396,14 +3396,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------+---------------------------+
 ; Routing Resource Type                       ; Usage                     ;
 +---------------------------------------------+---------------------------+
-; Block interconnects                         ; 1,351 / 289,320 ( < 1 % ) ;
+; Block interconnects                         ; 1,352 / 289,320 ( < 1 % ) ;
 ; C12 interconnects                           ; 50 / 13,420 ( < 1 % )     ;
-; C2 interconnects                            ; 425 / 119,108 ( < 1 % )   ;
+; C2 interconnects                            ; 427 / 119,108 ( < 1 % )   ;
 ; C4 interconnects                            ; 297 / 56,300 ( < 1 % )    ;
 ; DQS bus muxes                               ; 4 / 25 ( 16 % )           ;
 ; DQS-18 I/O buses                            ; 0 / 25 ( 0 % )            ;
 ; DQS-9 I/O buses                             ; 4 / 25 ( 16 % )           ;
-; Direct links                                ; 110 / 289,320 ( < 1 % )   ;
+; Direct links                                ; 109 / 289,320 ( < 1 % )   ;
 ; Global clocks                               ; 2 / 16 ( 13 % )           ;
 ; HPS SDRAM PLL inputs                        ; 0 / 1 ( 0 % )             ;
 ; HPS SDRAM PLL outputs                       ; 0 / 1 ( 0 % )             ;
@@ -3463,7 +3463,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Quadrant clocks                             ; 0 / 66 ( 0 % )            ;
 ; R14 interconnects                           ; 119 / 12,676 ( < 1 % )    ;
 ; R14/C12 interconnect drivers                ; 129 / 20,720 ( < 1 % )    ;
-; R3 interconnects                            ; 545 / 130,992 ( < 1 % )   ;
+; R3 interconnects                            ; 546 / 130,992 ( < 1 % )   ;
 ; R6 interconnects                            ; 657 / 266,960 ( < 1 % )   ;
 ; Spine clocks                                ; 3 / 360 ( < 1 % )         ;
 ; Wire stub REs                               ; 0 / 15,858 ( 0 % )        ;
@@ -4427,7 +4427,7 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:05
-Info (11888): Total time spent on timing analysis during the Fitter is 5.37 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 5.59 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -4520,9 +4520,9 @@ Info (169186): Following groups of pins have the same dynamic on-chip terminatio
 Info (144001): Generated suppressed messages file /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/output_files/soc_system.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 139 warnings
     Info: Peak virtual memory: 2943 megabytes
-    Info: Processing ended: Wed Apr  9 14:36:02 2025
-    Info: Elapsed time: 00:02:04
-    Info: Total CPU time (on all processors): 00:02:43
+    Info: Processing ended: Wed Apr  9 15:59:07 2025
+    Info: Elapsed time: 00:02:05
+    Info: Total CPU time (on all processors): 00:02:45
 
 
 +----------------------------+
