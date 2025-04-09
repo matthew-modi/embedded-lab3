@@ -142,8 +142,9 @@ int main()
     int r, g, b;
     float h = 0.0, s = 1.0, v = 1.0;
 
-    float x = 0.2, y = 0.2; // 16 bit so 0 to 2^16=65536-1
-    float dx = 0.004, dy = 0.005; // velocity in x and y directions
+    unsigned short x = 20, y = 20;
+    int dx = 1, dy = 1;
+    int r = 16;
 
     for (;;)
     {
@@ -159,12 +160,12 @@ int main()
         // Bounce the ball around the screen
         x += dx;
         y += dy;
-        if (x >= 0.975 || x <= 0.025)
+        if (x >= (640-r) || x <= r)
         {
             dx = -dx;
             x += dx;
         }
-        if (y >= 0.975 || y <= 0.025)
+        if (y >= (480-r) || y <= r)
         {
             dy = -dy;
             y += dy;
@@ -176,7 +177,7 @@ int main()
         set_position(&position);
         print_position();
 
-        usleep(100000);
+        usleep(1000000);
     }
 
     printf("VGA BALL Userspace program terminating\n");
