@@ -170,8 +170,8 @@ int main()
             y += dy;
         }
 
-        x = 1;
-        y = 1;
+        x = 0.5;
+        y = 0.5;
         
         vga_ball_position_t position = { // map x and y (0 to 1) to ints from 0 to 65535
             (unsigned short)(x * 65535), 
