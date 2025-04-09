@@ -143,7 +143,7 @@ int main()
     float h = 0.0, s = 1.0, v = 1.0;
 
     float x = 0.2, y; // 16 bit so 0 to 2^16=65536-1
-    float dx = 0.07, dy = 0.01; // velocity in x and y directions
+    float dx = 0.007, dy = 0.01; // velocity in x and y directions
 
     for (;;)
     {
@@ -176,7 +176,7 @@ int main()
         set_position(&position);
         print_position();
 
-        usleep(40000);
+        usleep(60000);
     }
 
     printf("VGA BALL Userspace program terminating\n");
