@@ -143,7 +143,7 @@ int main()
     float h = 0.0, s = 1.0, v = 1.0;
 
     float x = 0.2, y; // 16 bit so 0 to 2^16=65536-1
-    float dx = 0.007, dy = 0.01; // velocity in x and y directions
+    float dx = 0.0007, dy = 0.001; // velocity in x and y directions
 
     for (;;)
     {
@@ -159,12 +159,12 @@ int main()
         // Bounce the ball around the screen
         x += dx;
         y += dy;
-        if (x >= 1.0 || x <= 0.0)
+        if (x >= 0.975 || x <= 0.025)
         {
             dx = -dx;
             x += dx;
         }
-        if (y >= 1.0 || y <= 0.0)
+        if (y >= 0.975 || y <= 0.025)
         {
             dy = -dy;
             y += dy;
