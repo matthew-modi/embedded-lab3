@@ -143,7 +143,7 @@ int main()
     float h = 0.0, s = 1.0, v = 1.0;
 
     float x, y; // 16 bit so 0 to 2^16=65536-1
-    float dx = 0.001, dy = 0.001; // velocity in x and y directions
+    float dx = 0.01, dy = 0.01; // velocity in x and y directions
 
     for (;;)
     {
@@ -161,14 +161,17 @@ int main()
         y += dy;
         if (x >= 1.0 || x <= 0.0)
         {
-            dx = -dx; // Reverse direction in x
-            x += dx; // Adjust position to stay within bounds
+            dx = -dx;
+            x += dx;
         }
         if (y >= 1.0 || y <= 0.0)
         {
-            dy = -dy; // Reverse direction in y
-            y += dy; // Adjust position to stay within bounds
+            dy = -dy;
+            y += dy;
         }
+
+        x = 0.5;
+        y = 0.5;
         
         vga_ball_position_t position = { // map x and y (0 to 1) to ints from 0 to 65535
             (unsigned short)(x * 65535), 
