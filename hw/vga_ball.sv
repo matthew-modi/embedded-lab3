@@ -11,10 +11,10 @@
  *        1    | Green |  Green component
  *        2    | Blue  |  Blue component
  *        3    |  ---  |  Unused
- *        4    | x LSB |  X coordinate of ball (Most significant byte)
- *        5    | x MSB |  X coordinate of ball (Least significant byte)
- *        6    | y LSB |  Y coordinate of ball (Most significant byte)
- *        7    | y MSB |  Y coordinate of ball (Least significant byte)
+ *        4    | x LSB |  X coordinate of ball (least significant byte)
+ *        5    | x MSB |  X coordinate of ball (most significant byte)
+ *        6    | y LSB |  Y coordinate of ball (least significant byte)
+ *        7    | y MSB |  Y coordinate of ball (most significant byte)
  */
 
 module vga_ball (
