@@ -176,7 +176,7 @@ int main()
         set_position(&position);
         print_position();
 
-        usleep(60000);
+        usleep(100000);
     }
 
     printf("VGA BALL Userspace program terminating\n");
