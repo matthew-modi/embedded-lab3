@@ -1,5 +1,5 @@
 Analysis & Synthesis report for soc_system
-Wed Apr  9 14:33:56 2025
+Wed Apr  9 15:57:00 2025
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -226,7 +226,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Apr  9 14:33:56 2025       ;
+; Analysis & Synthesis Status     ; Successful - Wed Apr  9 15:57:00 2025       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; soc_system                                  ;
 ; Top-level Entity Name           ; soc_system_top                              ;
@@ -4680,8 +4680,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Apr  9 14:29:58 2025
+    Info: Processing started: Wed Apr  9 15:53:00 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off soc_system -c soc_system
+Info (125069): Default assignment values were changed in the current version of the Quartus Prime software -- changes to default assignments values are contained in file /tools/intel/intelFPGA/21.1/quartus/linux64/assignment_defaults.qdf
 Info (20032): Parallel compilation is enabled and will use up to 4 processors
 Info (12021): Found 1 design units, including 1 entities, in source file soc_system_top.sv
     Info (12023): Found entity 1: soc_system_top File: /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system_top.sv Line: 33
@@ -4834,6 +4835,7 @@ Info (12128): Elaborating entity "hps_sdram_p0_clock_pair_generator" for hierarc
 Info (12128): Elaborating entity "hps_sdram_p0_altdqdqs" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_altdqdqs:dq_ddio[0].ubidir_dq_dqs" File: /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/hps_sdram_p0_acv_hard_io_pads.v Line: 317
 Info (12128): Elaborating entity "altdq_dqs2_acv_connect_to_hard_phy_cyclonev" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_altdqdqs:dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_acv_connect_to_hard_phy_cyclonev:altdq_dqs2_inst" File: /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/hps_sdram_p0_altdqdqs.v Line: 146
 Info (12128): Elaborating entity "altera_mem_if_hhp_qseq_synth_top" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_hhp_qseq_synth_top:seq" File: /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/hps_sdram.v Line: 238
+Warning (12158): Entity "altera_mem_if_hhp_qseq_synth_top" contains only dangling pins File: /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/hps_sdram.v Line: 238
 Info (12128): Elaborating entity "altera_mem_if_hard_memory_controller_top_cyclonev" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_hard_memory_controller_top_cyclonev:c0" File: /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/hps_sdram.v Line: 794
 Info (12128): Elaborating entity "altera_mem_if_oct_cyclonev" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_oct_cyclonev:oct" File: /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/hps_sdram.v Line: 802
 Info (12128): Elaborating entity "altera_mem_if_dll_cyclonev" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_dll_cyclonev:dll" File: /homes/user/stud/fall21/mem2382/Desktop/embedded-lab3/hw/soc_system/synthesis/submodules/hps_sdram.v Line: 814
@@ -4980,11 +4982,11 @@ Info (21057): Implemented 1760 device resources after synthesis - the final reso
     Info (21061): Implemented 748 logic cells
     Info (21066): Implemented 1 delay-locked loops
     Info (21062): Implemented 1 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 95 warnings
-    Info: Peak virtual memory: 981 megabytes
-    Info: Processing ended: Wed Apr  9 14:33:56 2025
-    Info: Elapsed time: 00:03:58
-    Info: Total CPU time (on all processors): 00:04:08
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 96 warnings
+    Info: Peak virtual memory: 974 megabytes
+    Info: Processing ended: Wed Apr  9 15:57:00 2025
+    Info: Elapsed time: 00:04:00
+    Info: Total CPU time (on all processors): 00:04:10
 
 
 +------------------------------------------+
