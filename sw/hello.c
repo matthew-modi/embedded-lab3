@@ -159,7 +159,7 @@ int main()
         // Bounce the ball around the screen
         x += dx;
         y += dy;
-        if (x >= 1.0 || x <= 0.0)
+        if (x >=  || x <= 0.0)
         {
             dx = -dx;
             x += dx;
@@ -171,8 +171,8 @@ int main()
         }
         
         vga_ball_position_t position = { // map x and y (0 to 1) to ints from 0 to 65535
-            (unsigned short)(x * 65535),
-            (unsigned short)(y * 65535)};
+            (unsigned short)((x * 640) << 6), // 0 to 639
+            (unsigned short)((y * 480) << 6)}; // 0 to 479
         set_position(&position);
         print_position();
 
