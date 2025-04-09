@@ -72,8 +72,12 @@ module vga_ball (
 	always_comb begin
     r = 10'd256; // radius^2 = 16^2
 
-		dx = $signed(hcount[10:1]) - $signed(x[15:6]);
-		dy = $signed(vcount) - $signed(y[15:6]);
+    vga_x = hcount[10:1];
+    vga_y = vcount[9:0];
+    pos_x = x[15:6];
+    pos_y = y[15:6];
+		dx = (vga_x > pos_x) ? (vga_x - pos_x) : (pos_x - vga_x);
+		dy = (vga_y > pos_y) ? (vga_y - pos_y) : (pos_y - vga_y);
 		dist_sq = dx * dx + dy * dy;
 
 		if (dist_sq < r)
