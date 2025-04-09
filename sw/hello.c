@@ -174,8 +174,8 @@ int main()
         y = 0;
         
         vga_ball_position_t position = { // map x and y (0 to 1) to ints from 0 to 65535
-            (unsigned short)(128), 
-            (unsigned short)(128)};
+            (unsigned short)(100), 
+            (unsigned short)(100)};
         set_position(&position);
         print_position();
 
