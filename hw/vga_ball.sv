@@ -11,10 +11,10 @@
  *        1    | Green |  Green component
  *        2    | Blue  |  Blue component
  *        3    |  ---  |  Unused
- *        4    | x MSB |  X coordinate of ball (Most significant byte)
- *        5    | x LSB |  X coordinate of ball (Least significant byte)
- *        6    | y MSB |  Y coordinate of ball (Most significant byte)
- *        7    | y LSB |  Y coordinate of ball (Least significant byte)
+ *        4    | x LSB |  X coordinate of ball (Most significant byte)
+ *        5    | x MSB |  X coordinate of ball (Least significant byte)
+ *        6    | y LSB |  Y coordinate of ball (Most significant byte)
+ *        7    | y MSB |  Y coordinate of ball (Least significant byte)
  */
 
 module vga_ball (
@@ -67,10 +67,10 @@ module vga_ball (
 			3'h0: background_r <= writedata;
 			3'h1: background_g <= writedata;
 			3'h2: background_b <= writedata;
-			3'h4: x[15:8] <= writedata;
-			3'h5: x[7:0] <= writedata;
-			3'h6: y[15:8] <= writedata;
-			3'h7: y[7:0] <= writedata;
+			3'h4: x[7:0] <= writedata;
+			3'h5: x[15:8] <= writedata;
+			3'h6: y[7:0] <= writedata;
+			3'h7: y[15:8] <= writedata;
 		endcase
 
 	always_comb begin
