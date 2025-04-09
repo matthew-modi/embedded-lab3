@@ -51,7 +51,7 @@ void print_position()
         perror("ioctl(VGA_BALL_READ_POSITION) failed");
         return;
     }
-    printf("%04x %04x\n",
+    printf("x: %04x, y: %04x\n",
            vla.position.x, vla.position.y);
 }
 
@@ -170,8 +170,8 @@ int main()
             y += dy;
         }
 
-        x = 0.5;
-        y = 0.5;
+        x = 1;
+        y = 1;
         
         vga_ball_position_t position = { // map x and y (0 to 1) to ints from 0 to 65535
             (unsigned short)(x * 65535), 

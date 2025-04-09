@@ -70,9 +70,7 @@ module vga_ball (
 		endcase
 
 	always_comb begin
-		{VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
-
-		r = 10'd256; // radius^2 = 16^2
+    r = 10'd256; // radius^2 = 16^2
 
 		dx = $signed(hcount[10:1]) - $signed(x[15:6]);
 		dy = $signed(vcount) - $signed(y[15:6]);
