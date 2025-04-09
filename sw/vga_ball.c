@@ -69,10 +69,10 @@ static void write_background(vga_ball_color_t *background)
 }
 
 static void write_position(vga_ball_position_t *position) {
-	iowrite8(position->x & 0xFF,     POS_X_LSB(dev.virtbase));
-	iowrite8((position->x >> 8) & 0xFF, POS_X_MSB(dev.virtbase));
-	iowrite8(position->y & 0xFF,     POS_Y_LSB(dev.virtbase));
-	iowrite8((position->y >> 8) & 0xFF, POS_Y_MSB(dev.virtbase));
+	iowrite8(position->x,     		POS_X_LSB(dev.virtbase));
+	iowrite8((position->x >> 8), 	POS_X_MSB(dev.virtbase));
+	iowrite8(position->y,     		POS_Y_LSB(dev.virtbase));
+	iowrite8((position->y >> 8), 	POS_Y_MSB(dev.virtbase));
 	dev.position = *position;
 }
 
