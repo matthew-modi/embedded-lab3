@@ -159,7 +159,7 @@ int main()
         // Bounce the ball around the screen
         x += dx;
         y += dy;
-        if (x >=  || x <= 0.0)
+        if (x >= 1.0 || x <= 0.0)
         {
             dx = -dx;
             x += dx;
