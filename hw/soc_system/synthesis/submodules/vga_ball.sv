@@ -42,9 +42,9 @@ module vga_ball (
 	logic [15:0] x, y;
 	logic [9:0] r;
 
-    logic signed [11:0] dx;
-    logic signed [11:0] dy;
-    logic [23:0] dist_sq;
+  logic signed [11:0] dx;
+  logic signed [11:0] dy;
+  logic [23:0] dist_sq;
 
 	vga_counters counters (
 		.clk50(clk),
@@ -74,7 +74,7 @@ module vga_ball (
 
 		r = 10'd256; // radius^2 = 16^2
 
-		dx = $signed(hcount) - $signed(x[15:5]);
+		dx = $signed(hcount[10:1]) - $signed(x[15:6]);
 		dy = $signed(vcount) - $signed(y[15:6]);
 		dist_sq = dx * dx + dy * dy;
 
