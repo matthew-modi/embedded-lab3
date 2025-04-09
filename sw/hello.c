@@ -142,7 +142,7 @@ int main()
     int r, g, b;
     float h = 0.0, s = 1.0, v = 1.0;
 
-    float x = 0.2; // 16 bit so 0 to 2^16=65536-1
+    float x = 0.2, y; // 16 bit so 0 to 2^16=65536-1
     float dx = 0.01, dy = 0.01; // velocity in x and y directions
 
     for (;;)
@@ -171,7 +171,7 @@ int main()
         }
         
         vga_ball_position_t position = { // map x and y (0 to 1) to ints from 0 to 65535
-            (unsigned short)(x * 150), 
+            (unsigned short)(x * 170), 
             (unsigned short)(y * 120)};
         set_position(&position);
         print_position();
