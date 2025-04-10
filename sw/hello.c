@@ -140,7 +140,7 @@ int main()
     }
 
     int r, g, b;
-    float h = 0.0, s = 1.0, v = 1.0;
+    float h = 0.0, s = 1.0, v = 0.5;
 
     unsigned short x = 20, y = 20;
     int dx = 1, dy = 1;
