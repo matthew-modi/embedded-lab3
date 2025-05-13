@@ -55,7 +55,7 @@ of the Linux kernel.  One typically executes sopc2dts as follows:
 <DTAppend name="compatible" type="string" parentlabel="hps_0_rstmgr" val="syscon" action="add"/>
 
 <DTAppend name="speed-mode" type="number" parentlabel="hps_0_i2c0" val="0"/>
-<DTAppend name="speed-mode" type="string" parentlabel="hps_0_i2c1" val="0"/>
+<DTAppend name="speed-mode" type="number" parentlabel="hps_0_i2c1" val="0"/>
 <DTAppend name="status" type="string" parentlabel="hps_0_i2c2" val="disabled"/>
 <DTAppend name="status" type="string" parentlabel="hps_0_i2c3" val="disabled"/>
 
